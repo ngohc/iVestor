@@ -1,0 +1,320 @@
+<!Doctype HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>iVestor</title>
+     <!-- Our linked CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/mystyle.css">
+    <link rel="icon" href="/images/logo.png">
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
+</head>
+
+<!-- When this page loads, execute the JavaScript welcome() function that we created above. -->
+<body>
+
+    <header>
+        <div class="container">
+            <img class="logo-img" src="images/logo.png" atl="italianConsegna. logo" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="main.html">Home</a></li>
+                    <li><a href="stocksTab.html">Stocks</a></li>
+                    <li><a href="currency.html">Currency</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="profile.html">Profile</a></li>             
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class = "profDetails">
+            <ul>
+                <li><img src = "images/danial.png"></li>
+                <li>
+                    <div class = "profStats">
+                        <h3>Kai Asher</h3>
+                        <h4><b>$4505.98 (15.86%)</b></h4>
+                        <h6 style="font-size: 15px">Last 12M</h6>
+                    </div>
+                </li>
+                <li><button id = "nao"><img src = "images/notification.png"  id = "notiBtn"></a></button>
+                    <div id="notificationsModal" class="modal">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <h3>Notifications</h3>
+                                <div id = " "></div>
+                                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for notifications..">
+                                    <table id="myTable">
+                                        <tr>
+                                            <td>Elizabeth sent you a request to purchase <br> 
+                                                <strong>10</strong> shares of <strong>IBM</strong>
+                                                with <strong>Marc Cole</strong>. <br>
+                                                <br><h6 style="font-size: 12px">8 minutes ago</h6>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Pei Ying sent you a request to purchase <br> 
+                                                <strong>20</strong> shares of <strong>MSFT</strong>
+                                                with <strong>Yong Kwang</strong>. <br>
+                                                <br><h6 style="font-size: 12px">15 minutes ago</h6>
+                                            </td>                                
+                                        </tr>
+                                        <tr>
+                                            <td>Esther requested to sell <strong>15</strong> shares of 
+                                                <strong>BLDP</strong>. <br>Click here to take action. <br>
+                                                <br><h6 style="font-size: 12px">45 minutes ago</h6>
+                                            </td>                                
+                                        </tr>
+                                        <tr>
+                                            <td>Ivory sent you a request to purchase <br> 
+                                                <strong>50</strong> shares of <strong>XIAOMI</strong>
+                                                with <strong>Chantel</strong>. <br>
+                                                <br><h6 style="font-size: 12px">1 hour ago</h6>
+                                            </td>                                
+                                        </tr>
+                                        <tr>
+                                            <td>Kai Asher sent you a request to purchase <br> 
+                                                <strong>8</strong> shares of <strong>AES</strong>
+                                                with <strong>Marcus Haan</strong>. <br>
+                                                <br><h6 style="font-size: 12px">1h 30 minutes ago</h6>
+                                            </td>
+                                        </tr>
+                                    </table>
+                            </div>
+                    </div> 
+                </li>
+    
+                <li>
+                    <button class = "loginPgBtn" id = "friendsBtn">Friends</button>
+                        <div id="viewFriends" class="modal">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <h3>My Friends</h3>
+                                    <ul>
+                                        <li id = "friendsSearch"><input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.."></li>
+                                        <li id = "blaBtn"><button class = "loginPgBtn" id = "addFriendsBtn">+</button></li>
+                                    </ul>
+                                    <table id="myTable">
+                                    <tr class="header">
+                                        <th style="width:100%;">Names</th>
+                                    </tr>
+                                    <tr>
+                                        <td><button>Kai Asher</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><button>Cody Jonas</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jesse Lingard</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Marc Cole</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Marcus Haan</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Celine Lim Pei Ying</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ngoh Chantel</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Esther Lee</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kim Hun</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ivory</td>
+                                    </tr>
+                                    </table>
+                                </div>
+                            </div> 
+                        </div>
+                </li>
+            </ul>  
+        </div>
+        
+    <br><br><br><br><br><hr style="width: 94%;border: 0.5px solid #666">
+
+    <div class = "profTabs">
+        <ul>
+            <li><img src = "images/stats.png"><a href = "stats.html">
+                Statistics</a></li>
+                <li><img src = "images/donut.png"><a href = "profile.html">
+                Portfolio</a></li>
+                <li><img src = "images/chart.png"><a href = "chart.html">
+                Chart</a></li>
+        </ul>
+    </div>
+
+    <hr style="width: 40%; border: 0.5px solid #777">
+
+<!--- D O N U T C H A R T -->
+
+    <div class = "profChart" id = "chartChart">
+        <canvas id = "myChart"></canvas>
+    </div>
+
+    <script>
+    let myChart = document.getElementById('myChart').getContext('2d');
+
+    // Global Options
+    Chart.defaults.global.defaultFontFamily = 'Raleway';
+    Chart.defaults.global.defaultFontSize = 18;
+    Chart.defaults.global.defaultFontColor = 'black';
+
+    let massPopChart = new Chart(myChart, {
+      type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+      data:{
+        labels:['Jan', 'Feb', 'Mar', 'Apr','May','June','Jul','Aug','Sep','Oct','Nov','Dec', ],
+        datasets:[{
+          label:'Performance',
+          data:[
+            6.40,
+            0.07,
+            -1.84,
+            -0.04,
+            0.87,
+            -1.17,
+            4.17,
+            2.22,
+            -1.10,
+            3.21,
+            2.30,
+            4.10,
+          ],
+          //backgroundColor:'green',
+          backgroundColor:[
+            '#44D362',
+            '#44D362',
+            '#ff6961',
+            '#ff6961',
+            '#44D362',
+            '#ff6961',
+            '#44D362',
+            '#44D362',
+            '#ff6961',
+            '#44D362',
+            '#44D362',
+            '#44D362',
+          ],
+          borderWidth:1,
+          borderColor:'#777',
+          hoverBorderWidth:3,
+          hoverBorderColor:'#666'
+        }]
+      },
+      options:{
+        title:{
+          display:true,
+          text:'PERFORMANCE OF 2017 (%)',
+          fontSize:25
+        },
+        legend:{
+          display:true,
+          position:'right',
+          labels:{
+            fontColor:'#000'
+          }
+        },
+        tooltips:{
+          enabled:true
+        }
+      }
+    });
+  </script>
+
+<!-- A D D F R I E N D S -->
+<script>
+        // Get the modal
+        var addFriendsModal = document.getElementById('viewFriends');
+        
+        // Get the button that opens the modal
+        var addFriendsBtn = document.getElementById("friendsBtn");
+        
+        // When the user clicks the button, open the modal 
+        addFriendsBtn.onclick = function() {
+            addFriendsModal.style.display = "block";
+        }
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == addFriendsModal) {
+                addFriendsModal.style.display = "none";
+            }
+        }
+    </script>
+
+<!-- S E L E C T F R I E N D S T A B L E M O D A L -->
+    <script>
+        function myFunction() {
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("notiBtn");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+            }       
+        }
+        }
+     </script>
+
+
+
+
+
+<!-- N O T I F I C A T I O N -->
+    <script>
+        // Get the modal
+        var notiModal = document.getElementById('notificationsModal');
+        
+        // Get the button that opens the modal
+        var notiBtn = document.getElementById("notiBtn");
+        
+        // When the user clicks the button, open the modal 
+        notiBtn.onclick = function() {
+            notiModal.style.display = "block";
+        }
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == notiModal) {
+                notiModal.style.display = "none";
+            }
+        }
+    </script>
+
+<!-- FILTEREING S E L E C T F R I E N D S T A B L E M O D A L -->
+    <script>
+        function myFunction() {
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+            }       
+        }
+        }
+     </script>
+</body>
+</html>

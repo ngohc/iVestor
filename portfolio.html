@@ -1,0 +1,155 @@
+<!Doctype HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>iVestor</title>
+     <!-- Our linked CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/mystyle.css">
+    <link rel="icon" href="/images/logo.png">
+</head>
+
+<!-- When this page loads, execute the JavaScript welcome() function that we created above. -->
+<body>
+
+    <header>
+        <div class="container">
+            <img class="logo-img" src="images/logo.png" atl="italianConsegna. logo" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="main.html">Home</a></li>
+                    <li><a href="stocksTab.html">Stocks</a></li>
+                    <li><a href="currency.html">Currency</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="profile.html">Profile</a></li>  
+                    <li style="float:right; margin-left:50px;color:#4477a4;"><img src="images/profile.png" style="width:40px;height:40px">  <b>Kim Hun</b></li>           
+                </ul>
+            </nav>
+        </div>
+    </header><br><br><br><br><br>
+
+
+    <table class = "portfolioTable" align="center">
+        <tr>
+            <th>Name</th>
+            <th>Last</th>
+            <th>Sector</th>
+            <th>Units</th>
+            <th>Invested</th>
+            <th>With</th>
+            <th>Transaction</th>
+            <th>Details</th>
+        </tr>
+        <tr>
+            <td><img src = "images/ibm.png" style="float: left"> IBM</td>
+            <td>$130.02</td>
+            <td>Techonology</td>
+            <td>5</td>
+            <td>$650.10</td>
+            <td>Ivory</td>
+            <td><button id ="sellButton"><b>SELL</b></button></td>
+            <td><button class = "portfolioDetails sellButton"><a href = "stocks.html" style="text-decoration: none; color: white;"><b>DETAILS</b></a></button></td>
+        </tr>
+        <tr>
+            <td><img src = "images/logoFCA.jpg" style="float: left"> FCA</td>
+            <td>$13.75</td>
+            <td>Automobile</td>
+            <td>100</td>
+            <td>$1375.00</td>
+            <td>-</td>
+            <td><button id ="sellButton"><b>SELL</b></button></td>
+            <td><button class = "portfolioDetails sellButton"><a href = "stocks.html" style="text-decoration: none; color: white;"><b>DETAILS</b></a></button></td>
+        </tr>
+        <tr>
+            <td><img src = "images/logoAES.jpeg" style="float: left"> AES</td>
+            <td>$15.01</td>
+            <td>Manufacturing</td>
+            <td>10</td>
+            <td>$150.10</td>
+            <td>-</td>
+            <td><button id ="sellButton"><b>SELL</b></button></td>
+            <td><button class = "portfolioDetails sellButton"><a href = "stocks.html" style="text-decoration: none; color: white;"><b>DETAILS</b></a></button></td>
+        </tr>   
+        <tr>
+            <td><img src = "images/logoBLDP.jpg" style="float: left"> BLDP</td>
+            <td>$3.58</td>
+            <td>Green Energy</td>  
+            <td>100</td>
+            <td>$358.00</td>
+            <td>Esther</td>
+            <td><button id ="sellButton"><b>SELL</b></button></td>        
+            <td><button class = "portfolioDetails sellButton"><a href = "stocks.html" style="text-decoration: none; color: white;"><b>DETAILS</b></a></button></td>
+        </tr>  
+    </table>
+
+    <h4 style="font-weight: 700; ">PENDING ORDERS</h4><br>
+    <table class = "portfolioTable" align="center">  
+        <tr>
+            <th>Name</th>
+            <th>Last</th>
+            <th>Limit Price</th>
+            <th>Sector</th>
+            <th>Units</th>
+            <th>Invested</th>
+            <th>With</th>
+            <th>Details</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td><img src = "images/logoocbc.png" style="float: left"> OCBC</td>
+            <td>11.33</td>
+            <td>$10</td>
+            <td>Techonology</td>
+            <td>12</td>
+            <td>$1200.00</td>
+            <td>Celine <br>Chantel</td>
+            <td><button class = "portfolioDetails sellButton"><a href = "ocbcstock.html" style="text-decoration: none; color: white;"><b>DETAILS</b></a></button></td>
+            <td><button style="border:none"><img src="images/cancel.png" style="width:18px; height: 18px;margin-right:17px"></button></td>
+        </tr>
+        <tr>
+            <td><img src = "images/logoFord.png" style="float: left"> F</td>
+            <td>$8.55</td>
+            <td>$7</td>
+            <td>Automobile</td>
+            <td>42</td>
+            <td>$359.10</td>
+            <td>Kai Asher<br>Cole Haan</td>
+            <td><button class = "portfolioDetails sellButton"><a href = "stocks.html" style="text-decoration: none; color: white;"><b>DETAILS</b></a></button></td>
+            <td><button style="border:none"><img src="images/cancel.png" style="width:18px; height: 18px;margin-right:17px"></button></td>
+        </tr>
+    </table>
+<br><br>
+    <div class = "recoHalf"><br><br>
+        <h2 style="font-weight: 700;color: #555">RECCOMENDED STOCKS</h2>
+            <table class = "portfolioTable" id = "recommendationTable" align="center">
+                <tr>
+                    <th>Name</th>
+                    <th>Last</th>
+                    <th>Sector</th>
+                    <th>Details</th>
+                </tr>
+                <tr>
+                    <td><img src = "images/logoAerohive.png" style="float: left"> HIVE</td>
+                    <td>$3.88</td>
+                    <td>Manufacturing</td>
+                    <td><button class = "portfolioDetails sellButton"><a href = "stocks.html" style="text-decoration: none; color: white;"><b>DETAILS</b></a></button></td>
+                </tr> 
+                <tr>
+                    <td><img src = "images/logoMCD.png" style="float: left"> MCD</td>
+                    <td>$175.54</td>
+                    <td>F&B</td>
+                    <td><button class = "portfolioDetails sellButton"><a href = "stocks.html" style="text-decoration: none; color: white;"><b>DETAILS</b></a></button></td>
+                </tr> 
+                <tr>
+                    <td><img src = "images/logoAZRE.jpg" style="float: left"> AZRE</td>
+                    <td>$11.95</td>
+                    <td>Green Energy</td>
+                    <td><button class = "portfolioDetails sellButton"><a href = "stocks.html" style="text-decoration: none; color: white;"><b>DETAILS</b></a></button></td>
+                </tr>            
+            </table>
+    </div>
+
+
+    

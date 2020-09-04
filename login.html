@@ -1,0 +1,75 @@
+<!Doctype HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>iVestor</title>
+     <!-- Our linked CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/mystyle.css">
+    <link rel="icon" href="/images/logo.png">
+</head>
+
+<!-- When this page loads, execute the JavaScript welcome() function that we created above. -->
+<body>
+
+    <section>
+        <div class="container">
+            <img class="logo-img" src="images/logo.png" atl="italianConsegna. logo" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="main.html">Home</a></li>
+                    <li><a href="stocksTab.html">Stocks</a></li>
+                    <li><a href="currency.html">Currency</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="profile.html">Profile</a></li>            
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <form action="main.html">
+        <div class = "loginForm">
+            <div class="imgcontainer">
+            <img src="images/login3.jpg" alt="Avatar" class="avatar">
+            
+            <div class="loginContainer">
+                <h3 style="margin-top: 5px"><b>Welcome back!</b></h3> <br>
+
+                <label for="uname" style="float:left"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" required>
+            
+                <label for="psw" style="float: left"><b>Password</b></label>
+                <input type="password" id = "pw" placeholder="Enter Password" name="psw" required>
+                <div id = "showPw"><input type="checkbox" onclick="myFunction()"> Show Password</div>
+            
+                <label style="float: left; clear:both">
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+
+            <br><br><br><br>
+                          
+                <ul class = "btnlist" style="margin-left: -45px">
+                    <li><button class = "loginPgBtn"="submit"><a href = "profile.html" style="text-decoration: none; color:white">Login</a></button></li>
+                    <li><button class = "loginPgBtn cancelbtn" type="button"><a href = "main.html" style="text-decoration: none; color: white;">Cancel</a></button></li>
+                </ul>
+                <span class="dontHave"><a href = "register.html">Don't have an account yet? Sign up here!</a></span>
+
+            </div>
+        </div>
+    </form>
+
+    <script>
+        function myFunction() {
+        var x = document.getElementById("pw");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>
+</body>
+
+</html>

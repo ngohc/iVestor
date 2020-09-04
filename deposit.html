@@ -1,0 +1,62 @@
+<!Doctype HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>iVestor</title>
+     <!-- Our linked CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/mystyle.css">
+    <link rel="icon" href="/images/logo.png">
+</head>
+
+<!-- When this page loads, execute the JavaScript welcome() function that we created above. -->
+<body>
+
+    <section>
+        <div class="container">
+            <img class="logo-img" src="images/logo.png" atl="italianConsegna. logo" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="main.html">Home</a></li>
+                    <li><a href="stocksTab.html">Stocks</a></li>
+                    <li><a href="currency.html">Currency</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="profile.html">Profile</a></li>            
+                </ul>
+            </nav>
+        </div>
+    </section><br><br><br><br><br>
+
+    <div class = "depositForm"><br>
+        <p style="font-weight: 700; font-size: 1.7em;color: grey;">Deposit Funds</p>
+        <div id = "depositAmt">
+            <p style="float: left; margin-left: 42px; margin-bottom: -30px;color: grey">Select amount</p><br>
+            <ul>
+                <li><input type="text"></li>
+                <li>
+                    <select id = "depositCurr">
+                        <option value="USD">USD</option>
+                        <option value="SGD">SGD</option>
+                    </select>   
+                </li>
+            </ul>
+
+            <p style="float: left; margin-left: 42px; margin-bottom: 7px; color: gray">Payment Method</p><br>
+            <ul>
+                <li>
+                    <select class = "depositPayment"> 
+                        <option value="DBS 123-3123-312">DBS 123-3123-312</option>
+                        <option value="Visa **** **** **** 3190">Visa **** **** **** 3190</option>
+                        <option value="New credit card">New credit card</option>
+                        <option value="Link to new bank account">Link to new bank account</option>
+                    </select>   
+                </li>
+            </ul>
+            <br><br><br><br><br><br>
+            <br><br>
+
+            <button class = "btnLogReg" id = "depositBtn"><a href = "profile.html" style="text-decoration: none; color: white">DEPOSIT</a></button>
+        </div>
+    </div>

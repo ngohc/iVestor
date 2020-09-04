@@ -1,0 +1,73 @@
+<!Doctype HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>iVestor</title>
+     <!-- Our linked CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/mystyle.css">
+    <link rel="icon" href="/images/logo.png">
+</head>
+
+<!-- When this page loads, execute the JavaScript welcome() function that we created above. -->
+<body>
+
+    <section>
+        <div class="container">
+            <img class="logo-img" src="images/logo.png" atl="italianConsegna. logo" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="main.html">Home</a></li>
+                    <li><a href="stocksTab.html">Stocks</a></li>
+                    <li><a href="currency.html">Currency</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="profile.html">Profile</a></li>            
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <form action="main.html">
+        <div class = "registerForm">
+            <div class="regimgcontainer">
+            <img src="images/register.jpg" alt="Avatar" class="regAvatar">
+            
+            <div class="registerContainer">
+                <h3 style="margin-top: 5px"><b>Hello there!</b></h3> <br>
+
+                <label for="email" style="float:left"><b>Email</b></label>
+                <input type="email" placeholder="Enter Email" name="email" required>
+
+                <label for="fname" style="float:left"><b>First Name</b></label>
+                <input type="text" placeholder="Enter First Name" name="fname" required>
+
+                <label for="lname" style="float:left"><b>Last Name</b></label>
+                <input type="text" placeholder="Enter Last Name" name="lname" required>
+
+                <label for="uname" style="float:left"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" required>
+            
+                <label for="psw" style="float: left"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+            
+                <label style="float: left; clear:both">
+                        <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+
+            <br><br><br>
+
+                <ul class = "btnlist" style="margin-left: -45px">
+                    <li><button class = "registerPgBtn" style="border-radius: 8px"="submit"><a href = "recommendation.html" style="text-decoration: none; color:white">Sign Up</a></button></li>
+                    <li><button class = "registerPgBtn regcancelbtn" type="button"  style="border-radius: 8px"><a href = "main.html">Cancel</a></button></li>
+                </ul>
+                
+                <span class="dontHave"><a href = "login.html">Have an account? Login here!</a></span>
+            </div>
+        </div>
+    </form>
+
+</body>
+
+</html>

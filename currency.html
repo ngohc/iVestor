@@ -1,0 +1,197 @@
+<!Doctype HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>iVestor</title>
+    <!-- Our linked CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/mystyle.css">
+    <link rel="icon" href="/images/logo.png">
+</head>
+
+<!-- When this page loads, execute the JavaScript welcome() function that we created above. -->
+
+<body onload="clickExchange()">
+
+    <header>
+        <div class="container">
+            <img class="logo-img" src="images/logo.png" atl="italianConsegna. logo" class="logo">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="main.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="stocksTab.html">Stocks</a>
+                    </li>
+                    <li>
+                        <a href="currency.html">Currency</a>
+                    </li>
+                    <li>
+                        <a href="portfolio.html">Portfolio</a>
+                    </li>
+                    <li>
+                        <a href="profile.html">Profile</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <Br>
+    <br>
+
+
+    <div id="showGroupBuyModal" class="modal fade">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        </p>
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    TEST
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal" style="padding: 15px 50px" onclick="clickGroupBuy()">Group Buy</button>
+                    <button type="button" class="btn btn-info" data-dismiss="modal" style="padding: 15px 50px">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h4>Currency Converter:</h4>
+
+    <div class="container">
+        <div class="container">
+            <label>
+                <b>Singapore Dollar(SGD)</b>
+            </label>
+            <input type="text" id="amount" placeholder="Enter the amount" name="amount" required>
+            <br></br>
+            <label>
+                <b>Country Dollar</b>
+            </label>
+            <br></br>
+            <p id="thecurrency"></p>
+            <br></br>
+            <button class="btn btn-primary" type="submit" onclick="clickConvert()">Exchange</button>
+            <br></br>
+            Total Amount:
+            <p id="totalamount"></p>
+
+        </div>
+    </div>
+
+    <!-- <div class = "currencyTable" style="background-image: url('../images/blue.svg'); border: none;">
+        <h4>Currency Converter: USD to EUR</h4>
+        <br><br>
+        <h5 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">120 USD = <strong style="font-size: 1.3em;">102.367 EUR</strong></h5>
+        <p>US Dollar <-> Euro</p>
+        <p>1 USD = 0.853046 EUR <-> 1 EUR = 1.17227 USD</p>
+        <ul class = "currencyBoxes">
+            <li id = "first"><input id = "firstBox" type="text"></li>
+            <li>
+                <div class="dropdown currency1">
+                    <button class="dropbtn">Currency 1 <img src = "images/downarrow.png" style="float:right;width: 27px;height: 23px;"></button>
+                    <div class="dropdown-content">
+                      <a href="#">Link 1</a>
+                      <a href="#">Link 2</a>
+                      <a href="#">Link 3</a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="dropdown currency2">
+                    <button class="dropbtn">Currency 2 <img src = "images/downarrow.png" style="float:right;width: 27px;height: 23px;"></button>
+                    <div class="dropdown-content">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>
+                </div>
+            </li>            
+            <li id = "arrowCurrency"><button><img src = "images/rightarrow.png"></button></li>
+        </ul>
+    </div>-->
+
+
+    <script>
+
+        function clickConvert() {
+            var e = document.getElementById("country");
+            var currencyvalue = e.options[e.selectedIndex].value;
+            var correct = 0;
+
+            var amount = document.getElementById("amount").value;
+
+            if (currencyvalue == "USD") {
+                amount = amount * 1.365;
+            }
+
+            if (currencyvalue == "AUD") {
+                amount = amount * 0.9869;
+            }
+
+            if (currencyvalue == "CAD") {
+                amount = amount * 1.0341;
+            }
+
+            if (currencyvalue == "CNH") {
+                amount = amount * 19.7884;
+            }
+
+            var totalamount = document.getElementById("totalamount");
+            totalamount.innerHTML = amount;
+        }
+
+        function clickExchange() {
+            var data_array;
+            var request = new XMLHttpRequest();
+            request.open('GET', '/currencyapi', true);
+
+            request.onload = function () {
+                data_array = JSON.parse(request.responseText); // converts JSON data to JavaScript object
+
+                var currencyList = document.getElementById("thecurrency");
+
+                var info = '<select id="country" name="Country"> ';
+                for (var j = 0; j < data_array.length / 2; j += 2) {
+                    info = info + '<option value="' + data_array[j + 1].toCurrency + '">' + data_array[j + 1].toCurrency + ' ' + data_array[j].BuyingRate + '</option> \ ';
+                }
+                info = info + '</select>';
+
+                currencyList.innerHTML = info;
+            };
+
+            request.send();
+
+
+        }
+
+        function displayCurrency() {
+            var currencyList = document.getElementById("theList");
+
+            var info = "";
+            info = info + "";
+            alert(data_array);
+            for (var j = 0; j < data_array.length / 2; j += 2) {
+
+                info = info + '<option value="' + data_array[j + 1].toCurrency + '">' + data_array[j + 1].toCurrency + ' ' + data_array[j].BuyingRate + '</option> \ ';
+            }
+
+            currencyList.innerHTML = info;
+        }
+
+    </script>
+</body>
+
+</html>

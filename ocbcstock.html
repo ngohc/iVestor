@@ -1,0 +1,878 @@
+<!Doctype HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>iVestor</title>
+    <!-- Our linked CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/mystyle.css">
+    <link rel="icon" href="/images/logo.png">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-css/1.4.6/select2-bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css">
+
+    <style>
+        #chartdiv {
+            margin-top: 10px;
+            width: 570px;
+            height: 343px;
+            float: left;
+            clear: left;
+            margin-left: 0%;
+            margin-bottom: 200%;
+        }
+    </style>
+</head>
+
+<!-- When this page loads, execute the JavaScript welcome() function that we created above. -->
+
+<body onload="displayStockGraphs()">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap.native@2.0.15/dist/bootstrap-native-v4.min.js"></script>
+    <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+    <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+    <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+
+    <!-- NAV BAR -->
+    <header>
+        <div class="container">
+            <img class="logo-img" src="images/logo.png" atl="IVESTOR.logo" class="logo">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="main.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="stocksTab.html">Stocks</a>
+                    </li>
+                    <li>
+                        <a href="currency.html">Currency</a>
+                    </li>
+                    <li>
+                        <a href="portfolio.html">Portfolio</a>
+                    </li>
+                    <li>
+                        <a href="profile.html">Profile</a>
+                    </li>
+                    <li style="float:right; margin-left:50px;color:#4477a4;"><img src="images/profile.png" style="width:40px;height:40px">  <b>Ngoh Chantel</b></li>           
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <!-- name and price of stocks-->
+    <div class="stocksDetails">
+        <ul style="list-style-type: none">
+            <li id="stocksName">Oversea-Chinese Banking Corp. Limited (OCBC)</li>
+            <li id="stocksPrice">$11.33</li>
+            <li id="stocksChanges" style="color:green">+0.0.30 (0.27%)</li>
+        </ul>
+    </div>
+
+
+    <div class="stocksContainer">
+        <div class="stocksGraph">
+            <!-- graph -->
+            <div id='chartdiv'></div>
+        </div>
+        <div class="stocksBuy">
+            <p id="buyHeading">Buy OCBC
+                <img src="images/logoOCBC.png" style="width: 30px; height: 30px; margin-left: 5px; margin-bottom: 5px">
+            </p>
+            <!-- buying rectangle-->
+            <hr style="height:1px;width:250px;border:none;color:#333;background-color:#333;opacity: 0.3;" />
+
+            <div class="stocksTab">
+                <!-- for Individual and Group Buy-->
+                <button class="tablinks" onclick="openBuy(event, 'buyInd')" id="defaultOpen">Individual</button>
+                <button class="tablinks" onclick="openBuy(event, 'buyGroup')">Group Buy</button>
+            </div>
+
+            <!-- content of Individual button-->
+            <div id="buyInd" class="tabcontent">
+                <table style="width: 250px" class="buyDetails">
+                    <tr>
+                        <th>Units</th>
+                        <td><input type="text" id="numberUnits" name="numberUnits" onkeyup="calculateAmount(this)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Market Price ($)</th>
+                        <td input type="text" id="marketprice" name="marketprice" onkeyup="calculateAmount(this)">$11.33</td>
+                    </tr>
+                    <tr>
+                        <th>Total</th>
+                        <td><input type="text" id = "update" name="total" readonly></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- content of Group Buy button-->
+            <div id="buyGroup" class="tabcontent">
+                    <table style="width: 250px" class="buyDetails">
+                        <tr>
+                            <th>Units</th>
+                            <td><input type="text" id="groupnumberUnits" name="groupnumberUnits" onkeyup="calcAmt(this)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Limit Price ($)</th>
+                            <td><input type="text" id="limitprice" name="limitprice" onkeyup="calcAmt(this)"></td>
+                        </tr>
+                        <tr>
+                            <th>Total</th>
+                            <td><input type="text" id = "total" name="total" readonly></td>
+                        </tr>
+                        <tr>
+                            <th>With</th>
+                            <td><select multiple id="e1" class ="blaa" style="width: 123px;">
+                                <option value="KA">Kai Asher</option>
+                                <option value="CH">Cole Haan</option>
+                                <option value="YK">Kim</option>
+                                <option value="PY">Celine</option>
+                                <option value="ES">Esther</option>
+                                <option value="BJ">Brooklyn Joseph</option>
+                                <option value="LJ">Liam Jones</option>
+                                <option value="IV">Ivory</option>
+                            </select></td>
+                        </tr>
+                    </table>
+                </div>
+
+            <button id="buyButton">
+                <b>BUY</b>
+            </button>
+            <!-- buy button -->
+            <hr style="height:1px;width:250px;border:none;color:#333;background-color:#333;opacity: 0.3;" />
+
+            <table class="balanceDetails">
+                <tr>
+                    <td>$4250.00 available</td>
+                    <td>2.24% of equity</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+
+    <!-- BUY button's Confirmation Modal-->
+    <div id="buyModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content" id = "buyBtnModal" style="height: 300px; margin-top: 40px;">
+                <span class="close">&times;</span>
+                <h4><strong>Confirmation</strong></h4><br>
+                <p>You are about to buy <strong>120</strong> shares of OCBC at <strong>$10</strong> <br>with <b>Kim </b> and <b>Celine</b></p>
+                <p style="float: left">Each person will hold: <strong>40</strong> shares</p>
+                <p style="float: left">Each person to pay: <strong>$400</strong></p>
+                <ul class="confirm-buttons">
+                    <li><button class = "confirmationButtons" id = "confirmButton" onclick="snackFunction(), closeModal()">Confirm</button></li>
+                    <li><button class = "confirmationButtons" id = "cancelButton" onclick="cancelModal()">Cancel</button></li>
+                </ul>
+            </div> 
+        </div>
+
+    <div id="snackbar">Sent a request of <strong>120 shares of OCBC @ $10</strong> to <strong>Kim</strong> and <strong>Celine</strong>.</div>
+
+
+    <!--- B U Y B U T T O N M O D A L -->
+    <script>
+        // Get the modal
+        var modal = document.getElementById('buyModal');
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("buyButton");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+              modal.style.display = "block";
+        }
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+        <!-- S N A C K B A R M O D A L -->
+    <script>
+        function snackFunction() {
+            var x = document.getElementById("snackbar");
+            x.className = "show";
+            setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+        
+        }
+        function closeModal() {
+            var cfm = document.getElementById("confirmButton")[0];
+            cfm.onclick = modal.style.display = "none";
+        }
+        function cancelModal() {
+            var cnl = document.getElementById("cancelButton")[0];
+            cnl.onclick = modal.style.display = "none";
+        }
+    </script>
+
+    <!-- B U Y T A B S ('Individual' and 'Group Buy')-->
+    <script>
+
+        function openBuy(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.getElementById("defaultOpen").click();
+
+    </script>
+
+    <!-- CALCULATING TOTAL PRICES -->
+    <script>
+        function calculateAmount() {
+            var mp = 11.33;
+            var units = +document.getElementById("numberUnits").value;
+            var total = mp * units;
+            //display the result
+            var divobj = document.getElementById('update');
+            divobj.value = total;
+        }   
+
+        function calcAmt() {
+            var lp = +document.getElementById("limitprice").value;
+            var units = +document.getElementById("groupnumberUnits").value;
+            var total = lp * units;
+            //display the result
+            var divobj = document.getElementById('total');
+            divobj.value = total;
+        }
+    </script>
+
+    <script>
+        function displayStockGraphs() {
+            //var InvestmentsList = document.getElementById("theList");
+            //InvestmentsList.innerHTML="";
+
+            var chart = AmCharts.makeChart("chartdiv", {
+                "type": "serial",
+                "theme": "light",
+                "marginRight": 40,
+                "marginLeft": 40,
+                "autoMarginOffset": 20,
+                "mouseWheelZoomEnabled": true,
+                "dataDateFormat": "YYYY-MM-DD",
+                "valueAxes": [{
+                    "id": "v1",
+                    "axisAlpha": 0,
+                    "position": "left",
+                    "ignoreAxisWidth": true
+                }],
+                "balloon": {
+                    "borderThickness": 1,
+                    "shadowAlpha": 0
+                },
+                "graphs": [{
+                    "id": "g1",
+                    "balloon": {
+                        "drop": true,
+                        "adjustBorderColor": false,
+                        "color": "#ffffff"
+                    },
+                    "bullet": "round",
+                    "bulletBorderAlpha": 1,
+                    "bulletColor": "#FFFFFF",
+                    "bulletSize": 3,
+                    "hideBulletsCount": 50,
+                    "lineThickness": 2,
+                    "title": "red line",
+                    "useLineColorForBulletBorder": true,
+                    "valueField": "value",
+                    "balloonText": "<span style='font-size:15px;'>[[value]]</span>"
+                }],
+                
+                "chartCursor": {
+                    "pan": true,
+                    "valueLineEnabled": true,
+                    "valueLineBalloonEnabled": true,
+                    "cursorAlpha": 1,
+                    "cursorColor": "#258cbb",
+                    "limitToGraph": "g1",
+                    "valueLineAlpha": 0.2,
+                    "valueZoomable": true
+                },
+                
+                "categoryField": "date",
+                "categoryAxis": {
+                    "parseDates": true,
+                    "dashLength": 1,
+                    "minorGridEnabled": true
+                },
+                "export": {
+                    "enabled": true
+                },
+                "dataProvider": [
+                    {
+                        "date": "2018-05-07",
+                        "value": 13.17
+                    },
+                    {
+                        "date": "2018-05-08",
+                        "value": 13.08
+                    },
+                    {
+                        "date": "2018-05-09",
+                        "value": 13.14
+                    },
+                    {
+                        "date": "2018-05-10",
+                        "value": 13.13
+                    },
+                    {
+                        "date": "2018-05-11",
+                        "value": 13.14
+                    },
+                    {
+                        "date": "2018-05-14",
+                        "value": 13.16
+                    },
+                    {
+                        "date": "2018-05-15",
+                        "value": 13.06
+                    },
+                    {
+                        "date": "2018-05-16",
+                        "value": 13.19
+                    },
+                    {
+                        "date": "2018-05-17",
+                        "value": 13.20
+                    },
+                    {
+                        "date": "2018-05-18",
+                        "value": 13.01
+                    },
+                    {
+                        "date": "2018-05-21",
+                        "value": 13.10
+                    },
+                    {
+                        "date": "2018-05-22",
+                        "value": 13.02
+                    },
+                    {
+                        "date": "2018-05-23",
+                        "value": 12.78
+                    },
+                    {
+                        "date": "2018-05-23",
+                        "value": 12.99
+                    },
+                    {
+                        "date": "2018-05-23",
+                        "value": 12.78
+                    },
+                    {
+                        "date": "2018-05-24",
+                        "value": 12.99
+                    },
+                    {
+                        "date": "2018-05-25",
+                        "value": 12.97
+                    },
+                    {
+                        "date": "2018-05-28",
+                        "value": 12.99
+                    },
+                    {
+                        "date": "2018-05-30",
+                        "value": 12.60
+                    },
+                    {
+                        "date": "2018-05-31",
+                        "value": 12.54
+                    },
+                    {
+                        "date": "2018-06-01",
+                        "value": 12.53
+                    },
+                    {
+                        "date": "2018-06-04",
+                        "value": 12.77
+                    },
+                    {
+                        "date": "2018-06-05",
+                        "value": 12.88
+                    },
+                    {
+                        "date": "2018-06-06",
+                        "value": 12.80
+                    },
+                    {
+                        "date": "2018-06-07",
+                        "value": 12.84
+                    },
+                    {
+                        "date": "2018-06-08",
+                        "value": 12.58
+                    },
+                    {
+                        "date": "2018-06-11",
+                        "value": 12.63
+                    },
+                    {
+                        "date": "2018-06-12",
+                        "value": 12.54
+                    },
+                    {
+                        "date": "2018-06-13",
+                        "value": 12.30
+                    },
+                    {
+                        "date": "2018-06-14",
+                        "value": 12.13
+                    },
+                    {
+                        "date": "2018-06-18",
+                        "value": 11.98
+                    },
+                    {
+                        "date": "2018-06-19",
+                        "value": 11.86
+                    },
+                    {
+                        "date": "2018-06-20",
+                        "value": 11.92
+                    },
+                    {
+                        "date": "2018-06-21",
+                        "value": 11.87
+                    },
+                    {
+                        "date": "2018-06-22",
+                        "value": 11.75
+                    },
+                    {
+                        "date": "2018-06-25",
+                        "value": 11.60
+                    },
+                    {
+                        "date": "2018-06-26",
+                        "value": 11.68
+                    },
+                    {
+                        "date": "2018-06-27",
+                        "value": 11.50
+                    },
+                    {
+                        "date": "2018-06-28",
+                        "value": 11.61
+                    },
+                    {
+                        "date": "2018-06-29",
+                        "value": 11.64
+                    },
+                    {
+                        "date": "2018-07-02",
+                        "value": 11.64
+                    },
+                    {
+                        "date": "2018-07-03",
+                        "value": 11.47
+                    },
+                    {
+                        "date": "2018-07-04",
+                        "value": 11.52
+                    },
+                    {
+                        "date": "2018-07-05",
+                        "value": 11.50
+                    },
+                    {
+                        "date": "2018-07-06",
+                        "value": 11.24
+                    },
+                    {
+                        "date": "2018-07-09",
+                        "value": 11.31
+                    },
+                    {
+                        "date": "2018-07-09",
+                        "value": 11.31
+                    },
+                    {
+                        "date": "2018-07-10",
+                        "value": 11.56
+                    },
+                    {
+                        "date": "2018-07-11",
+                        "value": 11.33
+                    },
+                    {
+                        "date": "2018-07-12",
+                        "value": 11.30
+                    },
+                    {
+                        "date": "2018-07-13",
+                        "value": 11.30
+                    },
+                    {
+                        "date": "2018-07-16",
+                        "value": 11.14
+                    },
+                    {
+                        "date": "2018-07-17",
+                        "value": 11.12
+                    },
+                    {
+                        "date": "2018-07-18",
+                        "value": 11.15
+                    },
+                    {
+                        "date": "2018-07-19",
+                        "value": 11.25
+                    },
+                    {
+                        "date": "2018-07-20",
+                        "value": 11.31
+                    },
+                    {
+                        "date": "2018-07-23",
+                        "value": 11.22
+                    },
+                    {
+                        "date": "2018-07-24",
+                        "value": 11.30
+                    },
+                    {
+                        "date": "2018-07-25",
+                        "value": 11.66
+                    },
+                    {
+                        "date": "2018-07-26",
+                        "value": 11.69
+                    },
+                    {
+                        "date": "2018-07-27",
+                        "value": 11.66
+                    },
+                    {
+                        "date": "2018-07-30",
+                        "value": 11.52
+                    },
+                    {
+                        "date": "2018-07-31",
+                        "value": 11.57
+                    }, 
+                    {
+                        "date": "2018-08-01",
+                        "value": 11.60
+                    },
+                    {
+                        "date": "2018-08-02",
+                        "value": 11.34
+                    },
+                    {
+                        "date": "2018-08-03",
+                        "value": 11.35
+                    },
+                    {
+                        "date": "2018-08-06",
+                        "value": 11.58
+                    },
+                    {
+                        "date": "2018-08-07",
+                        "value": 12.05
+                    },
+                    {
+                        "date": "2018-08-08",
+                        "value": 12.00
+                    },
+                    {
+                        "date": "2018-08-10",
+                        "value": 11.80
+                    },
+                    {
+                        "date": "2018-08-13",
+                        "value": 11.57
+                    },
+                    {
+                        "date": "2018-08-14",
+                        "value": 11.61
+                    },
+                    {
+                        "date": "2018-08-15",
+                        "value": 11.36
+                    },
+                    {
+                        "date": "2018-08-16",
+                        "value": 11.20
+                    },
+                    {
+                        "date": "2018-08-17",
+                        "value": 11.22
+                    },
+                    {
+                        "date": "2018-08-20",
+                        "value": 11.19
+                    },
+                    {
+                        "date": "2018-08-21",
+                        "value": 11.18
+                    },
+                    {
+                        "date": "2018-08-23",
+                        "value": 11.21
+                    },
+                    {
+                        "date": "2018-08-24",
+                        "value": 11.48
+                    },
+                    {
+                        "date": "2018-08-27",
+                        "value": 11.41
+                    },
+                    {
+                        "date": "2018-08-28",
+                        "value": 11.42
+                    },
+                    {
+                        "date": "2018-08-29",
+                        "value": 11.30
+                    },
+                    {
+                        "date": "2018-08-30",
+                        "value": 11.25
+                    },
+                    {
+                        "date": "2018-08-31",
+                        "value": 11.30
+                    },
+                    {
+                        "date": "2018-09-03",
+                        "value": 11.30
+                    },
+                    {
+                        "date": "2018-09-04",
+                        "value": 11.30
+                    },
+                    {
+                        "date": "2018-09-05",
+                        "value": 11.30
+                    },
+                    {
+                        "date": "2018-09-06",
+                        "value": 11.12
+                    },
+                    {
+                        "date": "2018-09-07",
+                        "value": 11.06
+                    },
+                    {
+                        "date": "2018-09-10",
+                        "value": 11.00
+                    },
+                    {
+                        "date": "2018-09-11",
+                        "value": 10.95
+                    },
+                    {
+                        "date": "2018-09-12",
+                        "value": 11.04
+                    },
+                    {
+                        "date": "2018-09-13",
+                        "value": 11.14
+                    },
+                    {
+                        "date": "2018-09-14",
+                        "value": 11.17
+                    },
+                    {
+                        "date": "2018-09-17",
+                        "value": 11.05
+                    },
+                    {
+                        "date": "2018-09-18",
+                        "value": 11.04
+                    },
+                    {
+                        "date": "2018-09-19",
+                        "value": 11.12
+                    },
+                    {
+                        "date": "2018-09-20",
+                        "value": 11.10
+                    },
+                    {
+                        "date": "2018-09-21",
+                        "value": 11.29
+                    },
+                    {
+                        "date": "2018-09-24",
+                        "value": 11.36
+                    },
+                    {
+                        "date": "2018-09-25",
+                        "value": 11.45
+                    },
+                    {
+                        "date": "2018-09-26",
+                        "value": 11.39
+                    },
+                    {
+                        "date": "2018-09-28",
+                        "value": 11.36
+                    },
+                    {
+                        "date": "2018-10-01",
+                        "value": 11.45
+                    },
+                    {
+                        "date": "2018-10-02",
+                        "value": 11.31
+                    },
+                    {
+                        "date": "2018-10-03",
+                        "value": 11.31
+                    },
+                    {
+                        "date": "2018-10-04",
+                        "value": 11.31
+                    },
+                    {
+                        "date": "2018-10-05",
+                        "value": 11.31
+                    },
+                    {
+                        "date": "2018-10-08",
+                        "value": 11.31
+                    },
+                    {
+                        "date": "2018-10-09",
+                        "value": 11.31
+                    },
+                    {
+                        "date": "2018-10-10",
+                        "value": 11.31
+                    },
+                    {
+                        "date": "2018-10-11",
+                        "value": 11.31
+                    },
+                    {
+                        "date": "2018-10-12",
+                        "value": 11.31
+                    },
+                    {
+                        "date": "2018-10-15",
+                        "value": 11.31
+                    },
+                    {
+                        "date": "2018-10-16",
+                        "value": 11.31
+                    },
+                    {
+                        "date": "2018-10-17",
+                        "value": 11.31
+                    },
+                    {
+                        "date": "2018-10-18",
+                        "value": 11.31
+                    },
+                    {
+                        "date": "2018-10-19",
+                        "value": 11.31
+                    },
+                    {
+                        "date": "2018-10-22",
+                        "value": 10.81
+                    },
+                    {
+                        "date": "2018-10-23",
+                        "value": 10.56
+                    },
+                    {
+                        "date": "2018-10-24",
+                        "value": 10.64
+                    },
+                    {
+                        "date": "2018-10-25",
+                        "value": 10.60
+                    },
+                    {
+                        "date": "2018-10-26",
+                        "value": 10.40
+                    },
+                    {
+                        "date": "2018-10-29",
+                        "value": 10.42
+                    },
+                    {
+                        "date": "2018-10-30",
+                        "value": 10.50
+                    },
+                    {
+                        "date": "2018-10-31",
+                        "value": 10.74
+                    },
+                    {
+                        "date": "2018-11-01",
+                        "value": 11.15
+                    },
+                    {
+                        "date": "2018-11-02",
+                        "value": 11.47
+                    },
+                    {
+                        "date": "2018-11-05",
+                        "value": 11.32
+                    }
+                ]
+            });
+
+            chart.addListener("rendered", zoomChart);
+
+            zoomChart();
+
+        }
+
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+        <script>
+            $("#e1").select2({
+                placeholder: "Select friends",
+                allowClear: true,
+                maximumSelectionLength: 2,
+                });
+            
+        </script>
+</body>
+
+</html>
