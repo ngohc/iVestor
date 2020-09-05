@@ -1,4 +1,4 @@
-# iVestor-co-investing-application
+# iVestor
 An award-winning mock co-investment application integrated with Fidor's sandbox account and various APIs to complete the application.
 
 APIs include:
