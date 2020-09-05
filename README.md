@@ -1,5 +1,5 @@
 # iVestor
-An award-winning mock co-investment application integrated with Fidor's sandbox account and various APIs to complete the application.
+An award-winning mock co-investment web application integrated with Fidor's sandbox account and various APIs to complete the application.
 
 APIs include:
 1. AlphaVantage: real-time market data
